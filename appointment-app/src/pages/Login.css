@@ -1,0 +1,71 @@
+/* Login.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e0f0ff; /* light blue */
+  }
+  
+  .login-box {
+    background-color: white;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    width: 350px;
+  }
+  
+  .login-title {
+    text-align: center;
+    color: #0077cc;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  
+  .login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .login-button, .recovery-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .login-button:hover,
+  .recovery-button:hover {
+    background-color: #005fa3;
+  }
+  
+  .forgot-text {
+    margin-top: 10px;
+    color: #0077cc;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  .signup-link {
+    margin-top: 8px;
+    font-size: 14px;
+    text-align: center; /* ✅ Center the text */
+  }
+    
