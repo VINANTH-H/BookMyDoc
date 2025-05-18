@@ -1,0 +1,36 @@
+/* Header.css */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px;
+  background-color: #489af1; /* Soft blue background for the entire nav */
+  padding: 10px 20px; /* Padding around the navigation */
+  border-radius: 10px; /* Optional: adds rounded corners to the nav */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+nav a {
+  background-color: #ade9f5; /* Light blue for individual buttons */
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 18px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav a:hover {
+  background-color: #b7e5e9; /* Slightly darker blue on hover */
+  color: #0643fc;
+}
+
+nav a.active {
+  background-color: #6fd5e0f8; /* Slightly darker blue for active link */
+  color:#ffffff; /* Change text color for active state */
+}
+
+/* Optionally, add a focus state for accessibility */

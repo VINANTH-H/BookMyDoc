@@ -1,0 +1,321 @@
+/* Search Bar */
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 30px auto;
+  background-color: #fff;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.category-section h2 {
+  position: relative;
+  font-size: 24px; /* Font size of the category title */
+  color: black;
+  margin-bottom: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.category-section h2::before {
+  content: '';
+  display: inline-block;
+  width: 6px; /* Thickness of the vertical line */
+  height: 24px; /* Matches the font size of the category title */
+  background-color: #333; /* Dark color for the line */
+  margin-right: 10px; /* Space between the line and the text */
+}
+
+.category-section h2::before {
+  content: '';
+  display: block;
+  width: 6px; /* Thickness of the vertical line */
+  height: 100%; /* Matches the height of the text */
+  background-color: #333; /* Dark color for the line */
+  margin-right: 10px; /* Space between the line and the text */
+}
+.category-section h3, 
+.category-section p { /* Adjust the selector based on your subtitle element */
+  font-size: 18px; /* Adjust as needed */
+  color: black; /* Set the subtitle color to black */
+  margin-top: 5px; /* Add spacing if needed */
+}
+
+/* Doctor Description */
+.doctor-description {
+  font-size: 10px;
+  color: #555;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+/* Doctor Grid and Card */
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 0 10px;
+}
+
+.doctor-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-size: 1px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #0b5ed7;
+}
+
+/* Popup Form */
+.popup-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.popup-form h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color:black;
+}
+
+.popup-form form input,
+.popup-form form select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* UPI Payment Options */
+.upi-options {
+  margin-top: 20px;
+}
+
+.upi-options label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.upi-list label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* Submit/Cancel Buttons */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.submit-btn,
+.cancel-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #198754;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* QR Code Image */
+.qr-code-image {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* Toast Notifications */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeInOut 5s ease-in-out;
+}
+
+.success-toast {
+  background-color: #28a745;
+}
+
+.failure-toast {
+  background-color: #dc3545;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: linear-gradient(135deg, #e6f7e6, #ffffff);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.4s ease-out;
+  width: 90%;
+  max-width: 400px;
+  transform: scale(0.9);
+}
+
+.failure-modal .modal-content {
+  background: linear-gradient(135deg, #dc8080, #c67d7d);
+}
+
+.modal-icon {
+  font-size: 60px;
+  margin: 0 auto 15px auto;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.success-modal .modal-icon {
+  background-color: #d4edda;
+  color: #28a745;
+}
+
+.failure-modal .modal-icon {
+  background-color: #f9a9b0;
+  color: #dc3545;
+}
+
+.modal-content h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.modal-content p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.5;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.payment-buttons .success-btn {
+  background-color: #198754; /* Green color for success */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.payment-buttons .success-btn:hover {
+  background-color: #157347; /* Darker green on hover */
+}
