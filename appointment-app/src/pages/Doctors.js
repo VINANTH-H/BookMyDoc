@@ -139,8 +139,9 @@ const Doctors = () => {
   }, []);
 
   const validateToken = async (token) => {
-    try {
-      const response = await fetch('http://localhost:5000/api/auth/validate-token', {
+    try { // Render call 
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/auth/validate-token`
+, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -180,8 +181,9 @@ const Doctors = () => {
       return;
     }
 
-    try {
-      const response = await fetch('http://localhost:5000/api/auth/validate-token', {
+    try { // Render Call
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/auth/validate-token`
+, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
