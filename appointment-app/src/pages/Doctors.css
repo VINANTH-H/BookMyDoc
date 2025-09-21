@@ -1,109 +1,114 @@
-/* Search Bar */
+body {
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
 .search-input {
   width: 100%;
   max-width: 600px;
-  padding: 14px 18px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto 30px auto;
-  background-color: #fff;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
+  padding: 16px 22px;
+  font-size: 17px;
+  border: none;
+  border-radius: 14px;
+  margin: 0 auto 32px auto;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s;
 }
 
-/* Filter Controls */
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,123,255,0.15);
+}
+
 .filter-controls {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .category-section h2 {
-  position: relative;
-  font-size: 24px; /* Font size of the category title */
-  color: black;
-  margin-bottom: 10px;
-  text-align: left;
+  font-size: 26px;
+  color: #222;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
+  font-weight: 700;
 }
 
 .category-section h2::before {
   content: '';
   display: inline-block;
-  width: 6px; /* Thickness of the vertical line */
-  height: 24px; /* Matches the font size of the category title */
-  background-color: #333; /* Dark color for the line */
-  margin-right: 10px; /* Space between the line and the text */
+  width: 6px;
+  height: 28px;
+  background: linear-gradient(180deg, #007bff 0%, #00c6ff 100%);
+  border-radius: 3px;
+  margin-right: 12px;
 }
 
-.category-section h2::before {
-  content: '';
-  display: block;
-  width: 6px; /* Thickness of the vertical line */
-  height: 100%; /* Matches the height of the text */
-  background-color: #333; /* Dark color for the line */
-  margin-right: 10px; /* Space between the line and the text */
-}
 .category-section h3, 
-.category-section p { /* Adjust the selector based on your subtitle element */
-  font-size: 18px; /* Adjust as needed */
-  color: black; /* Set the subtitle color to black */
-  margin-top: 5px; /* Add spacing if needed */
+.category-section p {
+  font-size: 18px;
+  color: #444;
+  margin-top: 6px;
 }
 
-/* Doctor Description */
 .doctor-description {
-  font-size: 10px;
-  color: #555;
+  font-size: 13px;
+  color: #666;
   margin-left: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-/* Doctor Grid and Card */
 .doctor-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
   padding: 0 10px;
 }
 
 .doctor-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  background-color: #f9f9f9;
+  border: none;
+  border-radius: 18px;
+  padding: 22px 18px;
+  background: linear-gradient(135deg, #f8fafc 60%, #e0eafc 100%);
   text-align: center;
-  font-size: 1px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(0,123,255,0.10);
 }
 
 .book-button {
-  background-color: #0d6efd;
+  background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
   color: white;
   border: none;
-  padding: 6px 12px;
-  margin-top: 10px;
-  font-size: 12px;
-  border-radius: 8px;
+  padding: 10px 22px;
+  margin-top: 14px;
+  font-size: 15px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .book-button:hover {
-  background-color: #0b5ed7;
+  background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+  box-shadow: 0 4px 16px rgba(0,123,255,0.13);
 }
 
 /* Popup Form */
 .popup-form-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,133 +116,142 @@
 }
 
 .popup-form {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
+  background: #fff;
+  padding: 36px 28px;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 520px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   animation: slideUp 0.3s ease-out;
 }
 
 @keyframes slideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .popup-form h2 {
-  margin-bottom: 20px;
-  font-size: 20px;
-  color:black;
+  margin-bottom: 22px;
+  font-size: 22px;
+  color: #007bff;
+  font-weight: 700;
 }
 
 .popup-form form input,
 .popup-form form select {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 10px;
+  border: 1px solid #cce0ff;
+  font-size: 15px;
+  background: #f4f8ff;
+  transition: border 0.2s;
+}
+
+.popup-form form input:focus,
+.popup-form form select:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
 }
 
 /* UPI Payment Options */
 .upi-options {
-  margin-top: 20px;
+  margin-top: 22px;
 }
 
 .upi-options label {
   display: block;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
 .upi-list label {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 /* Submit/Cancel Buttons */
 .form-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 24px;
+  gap: 12px;
 }
 
 .submit-btn,
 .cancel-btn {
-  padding: 10px 18px;
+  padding: 12px 22px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
 }
 
 .submit-btn {
-  background-color: #198754;
+  background: linear-gradient(90deg, #198754 60%, #43e97b 100%);
   color: white;
 }
 
+.submit-btn:hover {
+  background: linear-gradient(90deg, #157347 60%, #198754 100%);
+}
+
 .cancel-btn {
-  background-color: #dc3545;
+  background: linear-gradient(90deg, #dc3545 60%, #ff758c 100%);
   color: white;
+}
+
+.cancel-btn:hover {
+  background: linear-gradient(90deg, #b52a37 60%, #dc3545 100%);
 }
 
 /* QR Code Image */
 .qr-code-image {
   width: 150px;
   height: 150px;
-  margin: 20px auto;
+  margin: 22px auto;
   display: block;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 
 /* Toast Notifications */
 .toast {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 15px 20px;
-  border-radius: 8px;
-  font-size: 16px;
+  top: 24px;
+  right: 24px;
+  padding: 16px 24px;
+  border-radius: 10px;
+  font-size: 17px;
   color: white;
   z-index: 1000;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
   animation: fadeInOut 5s ease-in-out;
 }
 
 .success-toast {
-  background-color: #28a745;
+  background: linear-gradient(90deg, #28a745 60%, #43e97b 100%);
 }
 
 .failure-toast {
-  background-color: #dc3545;
+  background: linear-gradient(90deg, #dc3545 60%, #ff758c 100%);
 }
 
 @keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  10%, 90% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0%, 100% { opacity: 0; transform: translateY(-20px);}
+  10%, 90% { opacity: 1; transform: translateY(0);}
 }
 
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,14 +261,14 @@
 /* Modal Content */
 .modal-content {
   background: linear-gradient(135deg, #e6f7e6, #ffffff);
-  padding: 30px;
-  border-radius: 15px;
+  padding: 36px 28px;
+  border-radius: 18px;
   text-align: center;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   animation: popIn 0.4s ease-out;
-  width: 90%;
-  max-width: 400px;
-  transform: scale(0.9);
+  width: 95%;
+  max-width: 420px;
+  transform: scale(0.95);
 }
 
 .failure-modal .modal-content {
@@ -262,10 +276,10 @@
 }
 
 .modal-icon {
-  font-size: 60px;
-  margin: 0 auto 15px auto;
-  width: 80px;
-  height: 80px;
+  font-size: 62px;
+  margin: 0 auto 18px auto;
+  width: 82px;
+  height: 82px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,49 +287,45 @@
 }
 
 .success-modal .modal-icon {
-  background-color: #d4edda;
+  background: #d4edda;
   color: #28a745;
 }
 
 .failure-modal .modal-icon {
-  background-color: #f9a9b0;
+  background: #f9a9b0;
   color: #dc3545;
 }
 
 .modal-content h2 {
-  font-size: 26px;
-  color: #333;
-  margin-bottom: 15px;
+  font-size: 28px;
+  color: #007bff;
+  margin-bottom: 18px;
   font-weight: bold;
 }
 
 .modal-content p {
-  font-size: 18px;
-  color: #555;
+  font-size: 19px;
+  color: #444;
   line-height: 1.5;
 }
 
 @keyframes popIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  0% { opacity: 0; transform: scale(0.85);}
+  100% { opacity: 1; transform: scale(1);}
 }
 
 .payment-buttons .success-btn {
-  background-color: #198754; /* Green color for success */
+  background: linear-gradient(90deg, #198754 60%, #43e97b 100%);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
 }
 
 .payment-buttons .success-btn:hover {
-  background-color: #157347; /* Darker green on hover */
+  background: linear-gradient(90deg, #157347 60%, #198754 100%);
 }

@@ -1,9 +1,8 @@
-/* Login.css */
-
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
 }
 
 .login-container {
@@ -11,109 +10,128 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #e0f0ff;
   position: relative;
 }
 
 .login-box {
-  background-color: white;
-  padding: 35px;
-  border-radius: 14px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  width: 350px;
+  background: #fff;
+  padding: 40px 32px;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  width: 370px;
   text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.login-box:hover {
+  box-shadow: 0 12px 40px rgba(0,123,255,0.13);
 }
 
 .welcome-heading {
-  font-size: 22px;
-  margin-bottom: 6px;
-  color: #004a99;
+  font-size: 26px;
+  margin-bottom: 8px;
+  color: #007bff;
+  font-weight: bold;
 }
 
 .welcome-subtitle {
-  font-size: 14px;
-  margin-bottom: 20px;
+  font-size: 15px;
+  margin-bottom: 22px;
   color: #555;
 }
 
 .login-title {
-  color: #0077cc;
-  margin-bottom: 20px;
-  font-size: 22px;
+  color: #007bff;
+  margin-bottom: 22px;
+  font-size: 24px;
   font-weight: bold;
 }
 
 .login-box input {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1.5px solid #cce0ff;
+  border-radius: 8px;
+  background: #f4f8ff;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+
+.login-box input:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
 }
 
 .login-button,
 .recovery-button {
   width: 100%;
-  padding: 10px;
-  background-color: #0077cc;
+  padding: 12px;
+  background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 14px;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .login-button:hover,
 .recovery-button:hover {
-  background-color: #005fa3;
+  background: linear-gradient(90deg, #005fa3 60%, #007bff 100%);
+  box-shadow: 0 4px 16px rgba(0,123,255,0.13);
 }
 
 .signup-link {
-  margin-top: 8px;
-  font-size: 14px;
+  margin-top: 10px;
+  font-size: 15px;
   text-align: center;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-/* ✅ Centered popup message */
 .popup-message {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 15px 25px;
-  border-radius: 10px;
-  font-size: 16px;
+  padding: 18px 30px;
+  border-radius: 12px;
+  font-size: 18px;
   font-weight: bold;
   z-index: 9999;
   opacity: 0;
   animation: fadeInOut 3s ease-in-out forwards;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   text-align: center;
 }
 
 .popup-message.success {
-  background-color: #4caf50;
+  background: linear-gradient(90deg, #28a745 60%, #43e97b 100%);
   color: white;
 }
 
 .popup-message.error {
-  background-color: #f44336;
+  background: linear-gradient(90deg, #dc3545 60%, #ff758c 100%);
   color: white;
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; transform: translate(-50%, -60%); }
-  5% { opacity: 1; transform: translate(-50%, -50%); }
-  95% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-50%, -60%); }
+  0% { opacity: 0; transform: translate(-50%, -60%);}
+  5% { opacity: 1; transform: translate(-50%, -50%);}
+  95% { opacity: 1;}
+  100% { opacity: 0; transform: translate(-50%, -60%);}
 }
 
 .page-heading {
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 1.7rem;
+  color: #222;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .login-wrapper {
