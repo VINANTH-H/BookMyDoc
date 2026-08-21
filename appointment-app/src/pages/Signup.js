@@ -184,12 +184,8 @@ function Signup() {
           <button type="submit" className="signup-button">Signup</button>
         </form>
 
-        {/* Show success or failure popup based on the signup result */}
         {signupStatus.message && (
           <div className={`status-popup ${signupStatus.error ? 'error-popup' : 'success-popup'}`}>
-            <span className={`status-icon ${signupStatus.error ? 'error-icon' : 'success-icon'}`}>
-              {signupStatus.error ? '❌' : '✔️'}
-            </span>
             <div className="status-message">{signupStatus.message}</div>
           </div>
         )}

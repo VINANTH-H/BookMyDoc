@@ -29,6 +29,11 @@ app.post('/api/auth/signup', async (req, res) => {
   const { firstName, lastName, phone, email, username, password, recoveryQuestion, recoveryAnswer } = req.body;
 
   try {
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Username or email already exists' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
       firstName,
@@ -70,6 +75,25 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
+// Middleware to authenticate token
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  
+  if (!token) return res.status(401).json({ message: 'Access denied' });
+  
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid token' });
+    req.user = user;
+    next();
+  });
+};
+
+// ✅ Validate Token
+app.post('/api/auth/validate-token', authenticateToken, (req, res) => {
+  res.json({ valid: true, user: req.user });
+});
+
 // ✅ Get doctors by specialization
 app.get('/doctors', async (req, res) => {
   const { specialization } = req.query;
@@ -84,7 +108,7 @@ app.get('/doctors', async (req, res) => {
 });
 
 // ✅ Book appointment
-app.post('/appointments', async (req, res) => {
+app.post('/appointments', authenticateToken, async (req, res) => {
   const { doctorId, patientName, patientPhone, date, time } = req.body;
 
   try {

@@ -234,18 +234,55 @@ const Doctors = () => {
     setShowQRCode(true);
   };
 
-  const handlePaymentSuccess = () => {
-    const successMessage = `✅ Appointment successfully booked with  ${selectedDoctor?.name} at ${formData.slot}.`;
-    setBookingSuccessMessage(successMessage);
-    setShowQRCode(false);
-    setShowForm(false); // Close the form
-    setTimeout(() => {
-      setBookingSuccessMessage(''); // Clear success message after 5 seconds
-    }, 5000);
+  const handlePaymentSuccess = async () => {
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/appointments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          doctorId: selectedDoctor?.name, 
+          patientName: formData.name,
+          patientPhone: formData.phone,
+          date: new Date().toISOString().split('T')[0], 
+          time: formData.slot,
+        }),
+      });
+
+      if (response.ok) {
+        const successMessage = `Appointment successfully booked with ${selectedDoctor?.name} at ${formData.slot}.`;
+        setBookingSuccessMessage(successMessage);
+        setShowQRCode(false);
+        setShowForm(false); // Close the form
+        setTimeout(() => {
+          setBookingSuccessMessage(''); // Clear success message after 5 seconds
+        }, 5000);
+      } else {
+        const errorData = await response.json();
+        setBookingFailureMessage(`Booking failed: ${errorData.error || 'Unknown error'}`);
+        setShowQRCode(false);
+        setShowForm(false);
+        setTimeout(() => setBookingFailureMessage(''), 5000);
+      }
+    } catch (error) {
+      console.error('Error booking appointment:', error);
+      setBookingFailureMessage('Booking failed: Network error');
+      setShowQRCode(false);
+      setShowForm(false);
+      setTimeout(() => setBookingFailureMessage(''), 5000);
+    }
   };
 
   const handlePaymentCancel = () => {
-    const failureMessage = `❌ Payment canceled. Booking failed.`;
+    const failureMessage = `Payment canceled. Booking failed.`;
     setBookingFailureMessage(failureMessage);
     setShowQRCode(false);
     setShowForm(false); // Close the form
@@ -299,16 +336,17 @@ const Doctors = () => {
       </div>
 
       {Object.entries(doctorData)
-        .filter(([category]) =>
-          (!categoryFilter || category === categoryFilter) &&
-          (category.toLowerCase().includes(searchQuery))
-        )
+        .filter(([category]) => !categoryFilter || category === categoryFilter)
         .map(([category, { subtitle, doctors }]) => {
-          const filteredDoctors = doctors.filter((doc) =>
-            (!searchQuery || doc.name.toLowerCase().includes(searchQuery)) &&
-            (!experienceFilter || doc.experience >= parseInt(experienceFilter)) &&
-            (!availabilityFilter || doc.available === availabilityFilter)
-          );
+          const filteredDoctors = doctors.filter((doc) => {
+            const matchesSearch = !searchQuery || 
+                                  doc.name.toLowerCase().includes(searchQuery) || 
+                                  category.toLowerCase().includes(searchQuery);
+            const matchesExperience = !experienceFilter || doc.experience >= parseInt(experienceFilter);
+            const matchesAvailability = !availabilityFilter || doc.available === availabilityFilter;
+            
+            return matchesSearch && matchesExperience && matchesAvailability;
+          });
 
           if (filteredDoctors.length === 0) return null;
 
@@ -381,7 +419,6 @@ const Doctors = () => {
    {bookingSuccessMessage && (
   <div className="modal-overlay">
     <div className="modal-content success-modal">
-      <div className="modal-icon">✅</div>
       <h2>Successfully Booked</h2>
       <p>{bookingSuccessMessage}</p>
     </div>
@@ -391,7 +428,6 @@ const Doctors = () => {
 {bookingFailureMessage && (
   <div className="modal-overlay">
     <div className="modal-content failure-modal">
-      <div className="modal-icon">❌</div>
       <h2>Booking Failed</h2>
       <p>{bookingFailureMessage}</p>
     </div>

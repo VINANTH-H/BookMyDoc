@@ -13,16 +13,15 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {//Render replace
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`
-, {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, {
         username,
         password,
       });
 
       localStorage.setItem('userToken', response.data.token); // Save the token
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      setMessage('✅ Login successful!');
+      setMessage('Login successful!');
       setMessageType('success');
 
       setTimeout(() => {
@@ -35,7 +34,7 @@ function Login() {
         }
       }, 1500);
     } catch (error) {
-      setMessage('❌ ' + (error.response?.data?.message || 'Login failed. Check username and Password.'));
+      setMessage(error.response?.data?.message || 'Login failed. Check username and password.');
       setMessageType('error');
 
       setTimeout(() => {
@@ -48,7 +47,7 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-wrapper">
-        <h1 className="page-heading">📅 Your Health, One Click Away – Book Your Appointment Today!👨‍⚕️</h1>
+        <h1 className="page-heading">Your Health, One Click Away – Book Your Appointment Today!</h1>
 
         {message && (
           <div className={`popup-message ${messageType}`}>
@@ -58,7 +57,7 @@ function Login() {
 
         <div className="login-box">
           <form onSubmit={handleLogin}>
-            <p className="welcome-subtitle">🔒 Please login to book your appointment</p>
+            <p className="welcome-subtitle">Please login to book your appointment</p>
             <h2 className="login-title">LOGIN</h2>
             <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
